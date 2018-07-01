@@ -116,3 +116,6 @@ Copyright (c) 2015-2016 Edwin Zhang (https://github.com/ehzhang). Released under
 [license]: https://github.com/techx/quill/blob/master/LICENSE.txt
 [email]: mailto:quill@hackmit.org
 [users]: https://github.com/techx/quill/wiki/Quill-Users
+
+# Modified by The Amarillo Tech Meetup:
+- Dewayne Higgs
