@@ -520,6 +520,24 @@ UserController.sendVerificationEmailById = function(id, callback){
 };
 
 /**
+ * Send an acceptance email given a user id.
+ */
+UserController.sendAcceptanceEmailById = function(id, callback){
+  User.findOne(
+    {
+      _id: id,
+      verified: true
+    },
+    function(err, user){
+      if (err || !user){
+        return callback(err);
+      }
+      Mailer.sendAcceptanceEmail(user.email);
+      return callback(err, user);
+  });
+};
+
+/**
  * Password reset email
  * @param  {[type]}   email    [description]
  * @param  {Function} callback [description]

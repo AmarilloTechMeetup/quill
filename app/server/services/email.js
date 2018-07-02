@@ -78,6 +78,37 @@ function sendOne(templateName, options, data, callback){
 }
 
 /**
+ * Send an acceptance email to a user.
+ * @param  {[type]}   email    [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+controller.sendAcceptanceEmail = function(email, callback) {
+
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - Your Application Has Been Accepted!"
+  };
+  var locals = {};
+
+  /**
+   * Email-accepted template
+   */
+  sendOne('email-accepted', options, locals, function(err, info){
+    if (err){
+      console.log(err);
+    }
+    if (info){
+      console.log(info.message);
+    }
+    if (callback){
+      callback(err, info);
+    }
+  });
+
+};
+
+/**
  * Send a verification email to a user, with a verification token to enter.
  * @param  {[type]}   email    [description]
  * @param  {[type]}   token    [description]
