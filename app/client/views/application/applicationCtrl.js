@@ -14,12 +14,12 @@ angular.module('reg')
       $scope.user = currentUser.data;
 
       // Is the student from MIT?
-      $scope.isMitStudent = $scope.user.email.split('@')[1] == 'mit.edu';
+      //$scope.isMitStudent = $scope.user.email.split('@')[1] == 'mit.edu';
 
       // If so, default them to adult: true
-      if ($scope.isMitStudent){
-        $scope.user.profile.adult = true;
-      }
+      //if ($scope.isMitStudent){
+      //  $scope.user.profile.adult = true;
+      //}
 
       // Populate the school dropdown
       populateSchools();
@@ -31,17 +31,17 @@ angular.module('reg')
        * TODO: JANK WARNING
        */
       function populateSchools(){
-        $http
-          .get('/assets/schools.json')
-          .then(function(res){
-            var schools = res.data;
-            var email = $scope.user.email.split('@')[1];
+        //$http
+        //  .get('/assets/schools.json')
+        //  .then(function(res){
+        //    var schools = res.data;
+        //    var email = $scope.user.email.split('@')[1];
 
-            if (schools[email]){
-              $scope.user.profile.school = schools[email].school;
-              $scope.autoFilledSchool = true;
-            }
-          });
+        //    if (schools[email]){
+        //      $scope.user.profile.school = schools[email].school;
+        //      $scope.autoFilledSchool = true;
+        //    }
+        //  });
 
         $http
           .get('/assets/schools.csv')

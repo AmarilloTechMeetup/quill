@@ -48,7 +48,7 @@ angular.module('reg')
         AuthService.sendResetEmail(email);
         sweetAlert({
           title: "Don't Sweat!",
-          text: "An email should be sent to you shortly.",
+          text: "An email should be sent to you shortly. It may take a few minutes.",
           type: "success",
           confirmButtonColor: "#e76482"
         });

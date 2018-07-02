@@ -28,7 +28,7 @@
         </div>
 
         <div class="field" ng-show="autoFilledSchool">
-          <label> School </label>
+          <label> School (if not applicable, then type N/A)</label>
           <input class="ui input"
                  disabled="disabled"
                  ng-show="autoFilledSchool"
@@ -36,7 +36,7 @@
         </div>
 
         <div class="field" ng-show="!autoFilledSchool">
-          <label> School </label>
+          <label> School (if not applicable, then type N/A)</label>
           <div id="school" class="ui search">
             <div class="ui input">
               <input class="prompt" type="text" placeholder="School" name="school" ng-model="user.profile.school">                
@@ -46,15 +46,17 @@
         </div>
 
         <div class="field">
-          <label>Graduation Year</label>
+          <label>Graduation Year (if not applicable, then select N/A)</label>
           <select
             name="year"
             ng-model="user.profile.graduationYear">
             <option value="">Graduation Year</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
+            <option value="N/A">N/A</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
           </select>
         </div>
 
@@ -80,13 +82,13 @@
 
         <div class="field">
           <label>
-              What would you like to learn or get out of HackMIT? (optional)
+              What would you like to learn or get out of the Yellowcity Hack-A-Thon? (optional)
           </label>
           <textarea ng-model="user.profile.essay">
           </textarea>
         </div>
 
-        <div class="field"
+        <!--<div class="field"
              ng-hide="isMitStudent">
           <p>
             Because of limitations imposed by MIT, we are not legally allowed to host
@@ -101,7 +103,7 @@
             <input type="checkbox" id="adult" ng-model="user.profile.adult">
             <label for="adult">I am 18 or older.</label>
           </div>
-        </div>
+        </div>-->
 
         <br>
 
