@@ -122,8 +122,7 @@ angular.module('reg')
                   .success(function(user){
                     $scope.users[index] = user;
                     swal("Accepted", user.profile.name + ' has been admitted.', "success");
-                    //Maybe this will work
-                    this.sendAcceptanceEmailById(user._id, function() {});
+
                   });
 
               });

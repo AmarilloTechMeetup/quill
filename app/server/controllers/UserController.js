@@ -649,7 +649,9 @@ UserController.resetPassword = function(token, password, callback){
  * @param  {Function} callback args(err, user)
  */
 UserController.admitUser = function(id, user, callback){
-  Mailer.sendAcceptanceEmail(user.email, function() {});
+  User.findById(id, function(err, acceptedUser) {
+    Mailer.sendAcceptanceEmail(acceptedUser.email, function() {});
+  });
   Settings.getRegistrationTimes(function(err, times){
     User
       .findOneAndUpdate({
