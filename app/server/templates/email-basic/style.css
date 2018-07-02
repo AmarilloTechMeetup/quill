@@ -39,7 +39,7 @@ body, #bodyTable{
 * @theme page
 */
 #bodyCell{
-  // /*@editable*/ border-top:4px solid #BBBBBB;
+  /*@editable*/ border-top:4px solid #BBBBBB;
 }
 
 /**
