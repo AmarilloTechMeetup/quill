@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 angular.module('reg')
   .controller('ConfirmationCtrl', [
     '$scope',
@@ -6,7 +8,7 @@ angular.module('reg')
     'currentUser',
     'Utils',
     'UserService',
-    function($scope, $rootScope, $state, currentUser, Utils, UserService){
+    function ($scope, $rootScope, $state, currentUser, Utils, UserService) {
 
       // Set up the user
       var user = currentUser.data;
@@ -32,9 +34,9 @@ angular.module('reg')
         'Other': false
       };
 
-      if (user.confirmation.dietaryRestrictions){
-        user.confirmation.dietaryRestrictions.forEach(function(restriction){
-          if (restriction in dietaryRestrictions){
+      if (user.confirmation.dietaryRestrictions) {
+        user.confirmation.dietaryRestrictions.forEach(function (restriction) {
+          if (restriction in dietaryRestrictions) {
             dietaryRestrictions[restriction] = true;
           }
         });
@@ -44,12 +46,12 @@ angular.module('reg')
 
       // -------------------------------
 
-      function _updateUser(e){
+      function _updateUser(e) {
         var confirmation = $scope.user.confirmation;
         // Get the dietary restrictions as an array
         var drs = [];
-        Object.keys($scope.dietaryRestrictions).forEach(function(key){
-          if ($scope.dietaryRestrictions[key]){
+        Object.keys($scope.dietaryRestrictions).forEach(function (key) {
+          if ($scope.dietaryRestrictions[key]) {
             drs.push(key);
           }
         });
@@ -57,22 +59,78 @@ angular.module('reg')
 
         UserService
           .updateConfirmation(user._id, confirmation)
-          .success(function(data){
+          .success(function (data) {
             sweetAlert({
               title: "Woo!",
               text: "You're confirmed!",
               type: "success",
               confirmButtonColor: "#e76482"
-            }, function(){
+            }, function () {
               $state.go('app.dashboard');
             });
           })
-          .error(function(res){
+          .error(function (res) {
             sweetAlert("Uh oh!", "Something went wrong.", "error");
           });
       }
 
-      function _setupForm(){
+      function getBirthday() {
+        return $scope.user.confirmation.birthday;
+      }
+
+      function hasParentLiabilityWaiverSignature() {
+        let sig = $scope.user.confirmation.signatureLiabilityParent;
+        return (sig.length > 0 ? true : false);
+      }
+
+      function hasParentPhotoReleaseSignature() {
+        let sig = $scope.user.confirmation.signaturePhotoReleaseParent;
+        return (sig.length > 0 ? true : false);
+      }
+
+      function checkAge(value, age) {
+        if (moment(value, "DD/MM/YYYY").isBefore(moment().subtract(parseInt(age, 10), "year"))) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      function _setupForm() {
+
+        // Here's hoping age validation works
+        $.fn.form.settings.rules.age = checkAge;
+
+        // Additional check based on age and LW parent signature
+        $.fn.form.settings.rules.needParentSignatureForLiabilityWaiver = function (value) {
+          let dateOfBirth = getBirthday();
+          let isUnder18 = !checkAge(dateOfBirth, 18);
+          if (isUnder18) {
+            if (hasParentLiabilityWaiverSignature()) {
+              return true;
+            } else {
+              return false;
+            }
+          } else {
+            return true;
+          }
+        }
+
+        // Additional check based on age and PR parent signature
+        $.fn.form.settings.rules.needParentSignatureForPhotoRelease = function (value) {
+          let dateOfBirth = getBirthday();
+          let isUnder18 = !checkAge(dateOfBirth, 18);
+          if (isUnder18) {
+            if (hasParentPhotoReleaseSignature()) {
+              return true;
+            } else {
+              return false;
+            }
+          } else {
+            return true;
+          }
+        }
+
         // Semantic-UI form validation
         $('.ui.form').form({
           fields: {
@@ -94,6 +152,15 @@ angular.module('reg')
                 }
               ]
             },
+            birthday: {
+              identifier: 'birthday',
+              rules: [
+                {
+                  type: 'age[16]',
+                  prompt: 'You have to be at least 16 years of age to participate.  Sorry.'
+                }
+              ]
+            },
             signatureLiability: {
               identifier: 'signatureLiabilityWaiver',
               rules: [
@@ -112,6 +179,24 @@ angular.module('reg')
                 }
               ]
             },
+            signatureLiabilityParent: {
+              identifier: 'signatureLiabilityWaiverParent',
+              rules: [
+                {
+                  type: 'needParentSignatureForLiabilityWaiver',
+                  prompt: 'You are under 18 years of age, so have your parent/guardian type this.'
+                }
+              ]
+            },
+            signaturePhotoReleaseParent: {
+              identifier: 'signaturePhotoReleaseParent',
+              rules: [
+                {
+                  type: 'needParentSignatureForPhotoRelease',
+                  prompt: 'You are under 18 years of age, so have your parent/guardian type this.'
+                }
+              ]
+            },
             signatureCodeOfConduct: {
               identifier: 'signatureCodeOfConduct',
               rules: [
@@ -125,8 +210,8 @@ angular.module('reg')
         });
       }
 
-      $scope.submitForm = function(){
-        if ($('.ui.form').form('is valid')){
+      $scope.submitForm = function () {
+        if ($('.ui.form').form('is valid')) {
           _updateUser();
         }
       };

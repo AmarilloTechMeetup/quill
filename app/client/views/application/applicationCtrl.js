@@ -73,7 +73,7 @@ angular.module('reg')
           .success(function(data){
             sweetAlert({
               title: "Awesome!",
-              text: "Your application has been saved.",
+              text: "Your application has been saved. Be sure to check your email over the course of the next few days.  Once we approve your application, you will receive an email from us stating the approval, and you will be required to confirm your attendance.",
               type: "success",
               confirmButtonColor: "#e76482"
             }, function(){
@@ -152,7 +152,7 @@ angular.module('reg')
               rules: [
                 {
                   type: 'allowMinors',
-                  prompt: 'You must be an adult, or an MIT student.'
+                  prompt: 'You must be an adult.'
                 }
               ]
             }
