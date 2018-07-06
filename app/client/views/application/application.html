@@ -20,14 +20,14 @@
                  ng-model="user.email">
         </div>
 
-        <div class="field">
+        <div class="required field">
           <label> Full Name </label>
           <input type="text"
                  name="name"
                  ng-model="user.profile.name">
         </div>
 
-        <div class="field" ng-show="autoFilledSchool">
+        <div class="required field" ng-show="autoFilledSchool">
           <label> School (if not applicable, then type N/A)</label>
           <input class="ui input"
                  disabled="disabled"
@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <div class="field">
+        <div class="required field">
           <label>Graduation Year (if not applicable, then select N/A)</label>
           <select
             name="year"
@@ -82,7 +82,7 @@
 
         <div class="field">
           <label>
-              What would you like to learn or get out of the Yellowcity Hack-A-Thon? (optional)
+              What would you like to learn or get out of the Yellow City Hack-A-Thon? (optional)
           </label>
           <textarea ng-model="user.profile.essay">
           </textarea>
