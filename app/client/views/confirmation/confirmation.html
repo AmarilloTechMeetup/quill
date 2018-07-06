@@ -12,33 +12,28 @@
 
         <fieldset ng-disabled="pastConfirmation">
 
-          <div class="field">
+          <div class="required field">
             <label> What's your phone number? (required) </label>
             <p>
               We need this in case we need to get ahold of you.
             </p>
-            <input type="tel"
-                   name="phone"
-                   ng-model="user.confirmation.phoneNumber"
-                   placeholder="1235551234">
+            <input type="tel" name="phone" ng-model="user.confirmation.phoneNumber" placeholder="1235551234">
           </div>
 
-          <div class="field">
-              <p>
-                We need this to verify your age.
-              </p>
-              <label>What's your birthday (dd/mm/yyyy)?</label>
-              <input type="text" 
-                     name="birthday" 
-                     ng-model="user.confirmation.birthday"
-                     placeholder="dd/mm/yyyy">
+          <div class="required field">
+            <label>What's your birthday (dd/mm/yyyy)? (required) </label>
+            <p>
+              We need this to verify your age.
+            </p>
+            <input type="text" name="birthday" ng-model="user.confirmation.birthday" placeholder="dd/mm/yyyy">
           </div>
 
           <div class="field">
             <label> Dietary Restrictions </label>
 
             <p>
-              If your restriction is not included here, please make sure you checked Other and let us know in the additional notes at the bottom.
+              If your restriction is not included here, please make sure you checked Other and let us know in the additional notes at the
+              bottom.
             </p>
             <p>
               We'll make sure you get fed :)
@@ -47,8 +42,7 @@
           </div>
 
           <div class="inline fields">
-            <div class="field"
-              ng-repeat="(key, value) in dietaryRestrictions">
+            <div class="field" ng-repeat="(key, value) in dietaryRestrictions">
 
               <div class="ui checkbox">
                 <input type="checkbox" ng-model="dietaryRestrictions[key]" />
@@ -58,15 +52,12 @@
             </div>
           </div>
 
-          <div class="field">
+          <div class="required field">
             <label> Shirt Size (required) </label>
             <p>
               Let's get you some swag!
             </p>
-            <select
-              name="shirt"
-              ng-model="user.confirmation.shirtSize"
-              required>
+            <select name="shirt" ng-model="user.confirmation.shirtSize" required>
               <option value="">Shirt Size</option>
               <option value="XS">Unisex X-Small</option>
               <option value="S">Unisex Small</option>
@@ -85,26 +76,17 @@
 
           <div class="field">
             <label> What are you studying and/or what are your proficiencies? </label>
-            <input type="text"
-                   name="study"
-                   placeholder="Computer Science, Product Design, Basket Weaving, etc."
-                   ng-model="user.confirmation.major">
+            <input type="text" name="study" placeholder="Computer Science, Product Design, Basket Weaving, etc." ng-model="user.confirmation.major">
           </div>
 
           <div class="field">
             <label> Github </label>
-            <input type="text"
-                   name="github"
-                   placeholder="https://github.com/foobar"
-                   ng-model="user.confirmation.github">
+            <input type="text" name="github" placeholder="https://github.com/foobar" ng-model="user.confirmation.github">
           </div>
 
           <div class="field">
             <label> Twitter </label>
-            <input type="text"
-                   name="twitter"
-                   placeholder="https://twitter.com/foobar"
-                   ng-model="user.confirmation.twitter">
+            <input type="text" name="twitter" placeholder="https://twitter.com/foobar" ng-model="user.confirmation.twitter">
           </div>
 
           <br>
@@ -112,95 +94,75 @@
 
           <div class="divided title">Legal</div>
 
-          <div class="field">
+          <div class="required field">
             <label> Liability Waiver </label>
             <p>
-              <a
-                target="_blank"
-                href="https://hack.yellowcity.io/liability-waiver.pdf">
+              <a target="_blank" href="https://hack.yellowcity.io/liability-waiver.pdf">
                 Liability Waiver
               </a>
             </p>
             <p>
-              For legal reasons, our event host asks that you read and accept the terms of our liability waiver. 
-              Again, as we mentioned at <a href="https://hack.yellowcity.io" target="_blank">hack.yellowcity.io</a>, you 
-              <strong> must </strong> be 16 years or older by the day of the event, or <strong> we will refuse you 
-                admission at the door. We will be checking ID. </strong> If you are under the age of 18, then get 
-                one of your parents/guardians to sign off on your attendance as well.
+              For legal reasons, our event host asks that you read and accept the terms of our liability waiver. Again, as we mentioned
+              at
+              <a href="https://hack.yellowcity.io" target="_blank">hack.yellowcity.io</a>, you
+              <strong> must </strong> be 16 years or older by the day of the event, or
+              <strong> we will refuse you admission at the door. We will be checking ID. </strong> If you are under the age of 18,
+              then get one of your parents/guardians to sign off on your attendance as well.
             </p>
             <p>
-              By writing my name below, I affirm that I have read and accepted the terms of the liability 
-              waiver above, and will be 16 years or older at the time of the event.
+              By writing my name below, I affirm that I have read and accepted the terms of the liability waiver above, and will be 16
+              years or older at the time of the event.
             </p>
-            <input type="text"
-                   name="signatureLiabilityWaiver"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signatureLiability">
+            <input type="text" name="signatureLiabilityWaiver" placeholder="Your Full Legal Name" ng-model="user.confirmation.signatureLiability">
+          </div>
+          <div class="field">
+            <label> Liability Waiver (For attendees under the age of 18)</label>
             <p>
-              (For attendees under the age of 18) <br>
-              By writing my name below, I affirm that I am the parent/guardian of the attendee, and I have read and 
-              accepted the terms of the liability waiver above.
+              By writing my name below, I affirm that I am the parent/guardian of the attendee, and I have read and accepted the terms
+              of the liability waiver above.
             </p>
-            <input type="text"
-                    name="signatureLiabilityWaiverParent"
-                    placeholder="Your Full Legal Name"
-                    ng-model="user.confirmation.signatureLiabilityParent">
+            <input type="text" name="signatureLiabilityWaiverParent" placeholder="Your Full Legal Name" ng-model="user.confirmation.signatureLiabilityParent">
           </div>
 
-          <div class="field">
+          <div class="required field">
             <label> Photo Release </label>
             <p>
-              <a
-                target="_blank"
-                href="https://hack.yellowcity.io/photo-release.pdf">
+              <a target="_blank" href="https://hack.yellowcity.io/photo-release.pdf">
                 Photo Release
               </a>
             </p>
             <p>
-              Signing this photo release means if we take photos or photos of you, we can 
-              share it with the world.
+              Signing this photo release means if we take photos or photos of you, we can share it with the world.
             </p>
             <p>
-              By writing my name below, I affirm that I have read and accepted the terms 
+              By writing my name below, I affirm that I have read and accepted the terms of the photo release above.
+            </p>
+            <input type="text" name="signaturePhotoRelease" placeholder="Your Full Legal Name" ng-model="user.confirmation.signaturePhotoRelease">
+          </div>
+          <div class="field">
+            <label> Photo Release (For attendees under the age of 18) </label>
+            <p>
+              By writing my name below, I affirm that I am the parent/guardian of the attendee, and I have read and accepted the terms
               of the photo release above.
             </p>
-            <input type="text"
-                   name="signaturePhotoRelease"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signaturePhotoRelease">
-            <p>
-              (For attendees under the age of 18) <br>
-              By writing my name below, I affirm that I am the parent/guardian of the attendee, and I have read and 
-              accepted the terms of the photo release above.
-            </p>
-            <input type="text"
-                    name="signaturePhotoReleaseParent"
-                    placeholder="Your Full Legal Name"
-                    ng-model="user.confirmation.signaturePhotoReleaseParent">
+            <input type="text" name="signaturePhotoReleaseParent" placeholder="Your Full Legal Name" ng-model="user.confirmation.signaturePhotoReleaseParent">
           </div>
 
-          <div class="field">
+          <div class="required field">
             <label> Code of Conduct </label>
             <p>
-              <a
-                target="_blank"
-                href="https://hack.yellowcity.io/code-of-conduct.pdf">
+              <a target="_blank" href="https://hack.yellowcity.io/code-of-conduct.pdf">
                 Hacker Code of Conduct
               </a>
             </p>
             <p>
-              It is extremely important to us that attendees follow a set of guidelines 
-              to make the event fun for everyone involved. Please read through and make 
-              sure you understand what we will be expecting of you.
+              It is extremely important to us that attendees follow a set of guidelines to make the event fun for everyone involved. Please
+              read through and make sure you understand what we will be expecting of you.
             </p>
             <p>
-              By writing my name below, I affirm that I have read and will abide by the 
-              code of conduct detailed above.
+              By writing my name below, I affirm that I have read and will abide by the code of conduct detailed above.
             </p>
-            <input type="text"
-                   name="signatureCodeOfConduct"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signatureCodeOfConduct">
+            <input type="text" name="signatureCodeOfConduct" placeholder="Your Full Legal Name" ng-model="user.confirmation.signatureCodeOfConduct">
           </div>
 
           <br>
@@ -215,14 +177,11 @@
             <p>
               If there's anything else you need to let us know, tell us here!
             </p>
-            <textarea
-              ng-model="user.confirmation.notes"></textarea>
+            <textarea ng-model="user.confirmation.notes"></textarea>
           </div>
 
           <div class="field" ng-hide="regIsClosed">
-            <button type="submit"
-                    class="fluid ui purple button"
-                    ng-click="submitForm()">
+            <button type="submit" class="fluid ui purple button" ng-click="submitForm()">
               Submit
             </button>
           </div>

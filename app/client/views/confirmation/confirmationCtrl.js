@@ -131,6 +131,7 @@ angular.module('reg')
 
         // Semantic-UI form validation
         $('.ui.form').form({
+          inline: true,
           fields: {
             shirt: {
               identifier: 'shirt',
