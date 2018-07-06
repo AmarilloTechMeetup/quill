@@ -78,12 +78,12 @@ angular.module('reg')
 
       function hasParentLiabilityWaiverSignature() {
         let sig = $scope.user.confirmation.signatureLiabilityParent;
-        return (sig.length > 0 ? true : false);
+        return (sig ? true : false);
       }
 
       function hasParentPhotoReleaseSignature() {
         let sig = $scope.user.confirmation.signaturePhotoReleaseParent;
-        return (sig.length > 0 ? true : false);
+        return (sig ? true : false);
       }
 
       function checkAge(value, age) {
