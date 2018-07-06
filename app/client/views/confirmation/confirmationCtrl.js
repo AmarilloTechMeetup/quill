@@ -1,5 +1,3 @@
-var moment = require('moment');
-
 angular.module('reg')
   .controller('ConfirmationCtrl', [
     '$scope',
@@ -8,7 +6,8 @@ angular.module('reg')
     'currentUser',
     'Utils',
     'UserService',
-    function ($scope, $rootScope, $state, currentUser, Utils, UserService) {
+    'moment',
+    function ($scope, $rootScope, $state, currentUser, Utils, UserService, moment) {
 
       // Set up the user
       var user = currentUser.data;
