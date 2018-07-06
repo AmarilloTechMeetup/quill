@@ -6,8 +6,7 @@ angular.module('reg')
     'currentUser',
     'Utils',
     'UserService',
-    'moment',
-    function ($scope, $rootScope, $state, currentUser, Utils, UserService, moment) {
+    function ($scope, $rootScope, $state, currentUser, Utils, UserService) {
 
       // Set up the user
       var user = currentUser.data;
