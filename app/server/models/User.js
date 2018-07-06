@@ -56,8 +56,8 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
-  phoneNumber: { type: String, required: true }, 
-  birthday: { type: String, required: true }, 
+  phoneNumber: String,
+  birthday: String,
   dietaryRestrictions: [String],
   shirtSize: {
     type: String,
@@ -95,11 +95,11 @@ var confirmation = {
 
   notes: String,
 
-  signatureLiability: { type: String, required: true }, 
-  signatureLiabilityParent: { type: String, required: true }, 
-  signaturePhotoRelease: { type: String, required: true }, 
-  signaturePhotoReleaseParent: { type: String, required: true }, 
-  signatureCodeOfConduct: { type: String, required: true }
+  signatureLiability: String,
+  signatureLiabilityParent: String,
+  signaturePhotoRelease: String,
+  signaturePhotoReleaseParent: String,
+  signatureCodeOfConduct: String
 };
 
 var status = {
