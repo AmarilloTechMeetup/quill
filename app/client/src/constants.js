@@ -7,7 +7,7 @@ angular.module('reg')
         INCOMPLETE_TITLE: 'You still need to complete your application!',
         INCOMPLETE: 'If you do not complete your application before the [APP_DEADLINE], you will not be allowed to attend!',
         SUBMITTED_TITLE: 'Your application has been submitted!',
-        SUBMITTED: 'Feel free to edit it at any time. However, once registration is closed, you will not be able to edit it any further.\nAdmissions will be determined by a random lottery. Please make sure your information is accurate before registration is closed!',
+        SUBMITTED: 'Feel free to edit it at any time. Keep in mind that submitting an application does not guarantee that you can attend the hackathon: keep an eye out for an email stating that your application has been accepted.  Acceptance of your application means you can attend.\nHowever, once registration is closed, you will not be able to edit it any further.\nOnce again, you will be notified via email if your application is accepted!',
         CLOSED_AND_INCOMPLETE_TITLE: 'Unfortunately, registration has closed.',
         CLOSED_AND_INCOMPLETE: 'Because you have not completed your profile in time, you will not be eligible to attend.',
         ADMITTED_AND_CAN_CONFIRM_TITLE: 'You must confirm by [CONFIRM_DEADLINE].',
